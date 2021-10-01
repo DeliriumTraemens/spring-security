@@ -26,14 +26,16 @@ public class MainController {
 		return "Secured part of Web Service\n "+auth;
 	}
 	
-	@GetMapping("/hello")
+	@GetMapping("/read_profile")
 	public String sayHello(){
-		return "HI Say Hello";
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		
+		return "Hey, here is profile of ---> '  ' " + auth;
 	}
 	
-	@GetMapping("/names")
-	public List names(){
-		return names;
+	@GetMapping("/only_for_admins")
+	public String adminPage(){
+		return "Hey ho, it's ADMINKA!;))";
 	}
 	
 }
